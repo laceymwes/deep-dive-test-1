@@ -98,7 +98,6 @@ public class ClockAngles {
   private static final double RADIANS_PER_DEGREE = (2 * Math.PI) / 360.0;
 
 
-
   /**
    * Computes and returns the angle made by the hour hand, measured clockwise
    * from straight up (12 o'clock on the clock face).

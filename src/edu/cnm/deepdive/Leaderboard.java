@@ -2,7 +2,14 @@ package edu.cnm.deepdive;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.PrimitiveIterator;
+import java.util.Set;
+import java.util.TreeSet;
+import javax.lang.model.type.PrimitiveType;
 
 /**
  * The static methods of this class compute rankings of an input array of scores
@@ -89,8 +96,32 @@ public class Leaderboard {
    * @param scores      scores to be ranked against leaderboard scores.
    * @return            resulting ranks.
    */
-//  public static int[] getDenseRanking(int[] leaderboard, int[] scores) {
-//    // TODO Implement method for EXTRA CREDIT!
-//  }
+
+  public static int[] getDenseRanking(int[] leaderboard, int[] scores) {
+    Integer[] newBoard = removeSort(leaderboard);
+    for (int i = 0; i < scores.length; ++i) {
+      for (int j = 0; j < newBoard.length; ++j) {
+        if (scores[i] >= newBoard[j]) {
+          scores[i] = j + 1;
+          break;
+        }
+        if (j == newBoard.length - 1) {
+          scores[i] = newBoard.length + 1; // player score is lower than scores on leaderboard
+        }
+      }
+    }
+    return scores;
+  }
+
+  private static Integer[] removeSort(int[] leaderboard) {
+    Set<Integer> leaderSet = new TreeSet<>();
+    for (int item : leaderboard) {
+      leaderSet.add(item);
+    }
+    // I LOVE LAMBDA
+    // I LOVE LAMP
+    leaderSet = ((TreeSet<Integer>) leaderSet).descendingSet();
+    return leaderSet.toArray(new Integer[leaderSet.size()]);
+  }
 
 }
