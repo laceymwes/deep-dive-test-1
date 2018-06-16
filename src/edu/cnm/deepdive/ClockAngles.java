@@ -95,6 +95,9 @@ public class ClockAngles {
 
   private static final int DEGREES_PER_HOUR = 360 / 12;
   private static final int DEGREES_PER_MINUTE = 360 / 60;
+  private static final double RADIANS_PER_DEGREE = (2 * Math.PI) / 360.0;
+
+
 
   /**
    * Computes and returns the angle made by the hour hand, measured clockwise
@@ -105,9 +108,10 @@ public class ClockAngles {
    * @param minutes minute component of time, from real interval [0&ndash;60).
    * @return        angle (in degrees) to which hour hand is oriented.
    */
+
   public static double hourHandDegrees(int hours, double minutes) {
     double time = hours + (minutes / 60.0);
-    return time * DEGREES_PER_HOUR;
+    return (time > 12) ? (time - 12) * DEGREES_PER_HOUR : time * DEGREES_PER_HOUR;
   }
 
   /**
@@ -129,20 +133,24 @@ public class ClockAngles {
    *                {0, 1, &hellip;, 23}.
    * @param minutes minute component of time, from real interval [0&ndash;60).
    * @return        angle (in radians) to which hour hand is oriented.
-   */
-//  public static double hourHandRadians(int hours, double minutes) {
-//    // TODO Implement method for EXTRA CREDIT!
-//  }
-//
-//  /**
-//   * Computes and returns the angle made by the minute hand, measured
-//   * counter-clockwise from the positive X-axis (3 o'clock on the clock face).
-//   *
-//   * @param minutes minute component of time, from real interval [0&ndash;60).
-//   * @return        angle (in radians) to which minute hand is oriented.
 //   */
-//  public static double minuteHandRadians(double minutes) {
-//    // TODO Implement method for EXTRA CREDIT!
-//  }
+  public static double hourHandRadians(int hours, double minutes) {
+    double degrees = hourHandDegrees(hours, minutes);
+    return (degrees <= 90 && degrees >= 0) ? (90 - degrees) * RADIANS_PER_DEGREE :
+        ((360 - degrees) + 90) * RADIANS_PER_DEGREE;
+  }
+
+  /**
+   * Computes and returns the angle made by the minute hand, measured
+   * counter-clockwise from the positive X-axis (3 o'clock on the clock face).
+   *
+   * @param minutes minute component of time, from real interval [0&ndash;60).
+   * @return        angle (in radians) to which minute hand is oriented.
+   */
+  public static double minuteHandRadians(double minutes) {
+    double degrees = minuteHandDegrees(minutes);
+    return (degrees <= 90 && degrees >= 0) ? (90 - degrees) * RADIANS_PER_DEGREE :
+        ((360 - degrees) + 90) * RADIANS_PER_DEGREE;
+  }
 
 }
