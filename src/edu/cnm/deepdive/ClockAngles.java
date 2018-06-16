@@ -93,6 +93,9 @@ package edu.cnm.deepdive;
  */
 public class ClockAngles {
 
+  private static final int DEGREES_PER_HOUR = 360 / 12;
+  private static final int DEGREES_PER_MINUTE = 360 / 60;
+
   /**
    * Computes and returns the angle made by the hour hand, measured clockwise
    * from straight up (12 o'clock on the clock face).
@@ -103,7 +106,8 @@ public class ClockAngles {
    * @return        angle (in degrees) to which hour hand is oriented.
    */
   public static double hourHandDegrees(int hours, double minutes) {
-    // TODO Implement method.
+    double time = hours + (minutes / 60.0);
+    return time * DEGREES_PER_HOUR;
   }
 
   /**
@@ -114,7 +118,7 @@ public class ClockAngles {
    * @return        angle (in degrees) to which minute hand is oriented.
    */
   public static double minuteHandDegrees(double minutes) {
-    // TODO Implement method.
+    return minutes * DEGREES_PER_MINUTE;
   }
 
   /**
