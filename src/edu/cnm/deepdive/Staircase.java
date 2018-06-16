@@ -114,9 +114,14 @@ public class Staircase {
    */
   public static String[] buildLinearStaircase(int height) {
     String[] staircase = new String[height];
-    for (int i = 0; i < staircase.length; ++i) {
-
+    int j = 0;
+    for (int i = 0; i < height; ++i) {
+      staircase[i] = ""; // initialize String object
+      for (j = height - 1; j >= 0; --j) {
+        staircase[i] += (j > i ) ? " " : "*";
+      }
     }
+    return staircase;
   }
 
   /**
