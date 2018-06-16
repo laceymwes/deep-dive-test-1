@@ -1,5 +1,9 @@
 package edu.cnm.deepdive;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * The static methods of this class compute rankings of an input array of scores
  * against a leaderboard of scores.
@@ -57,7 +61,18 @@ public class Leaderboard {
    * @return            resulting ranks.
    */
   public static int[] getCompetitionRanking(int[] leaderboard, int[] scores) {
-    // TODO Implement method.
+    for (int i = 0; i < scores.length; ++i) {
+      for (int j = 0; j < leaderboard.length; ++j) {
+        if (scores[i] >= leaderboard[j]) {
+          scores[i] = j + 1;
+          break;
+        }
+        if (j == leaderboard.length - 1) {
+          scores[i] = leaderboard.length + 1; // player score is lower than scores on leaderboard
+        }
+      }
+    }
+    return scores;
   }
 
   /**
@@ -74,8 +89,8 @@ public class Leaderboard {
    * @param scores      scores to be ranked against leaderboard scores.
    * @return            resulting ranks.
    */
-  public static int[] getDenseRanking(int[] leaderboard, int[] scores) {
-    // TODO Implement method for EXTRA CREDIT!
-  }
+//  public static int[] getDenseRanking(int[] leaderboard, int[] scores) {
+//    // TODO Implement method for EXTRA CREDIT!
+//  }
 
 }

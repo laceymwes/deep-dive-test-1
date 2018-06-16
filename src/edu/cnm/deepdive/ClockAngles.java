@@ -130,19 +130,19 @@ public class ClockAngles {
    * @param minutes minute component of time, from real interval [0&ndash;60).
    * @return        angle (in radians) to which hour hand is oriented.
    */
-  public static double hourHandRadians(int hours, double minutes) {
-    // TODO Implement method for EXTRA CREDIT!
-  }
-
-  /**
-   * Computes and returns the angle made by the minute hand, measured
-   * counter-clockwise from the positive X-axis (3 o'clock on the clock face).
-   *
-   * @param minutes minute component of time, from real interval [0&ndash;60).
-   * @return        angle (in radians) to which minute hand is oriented.
-   */
-  public static double minuteHandRadians(double minutes) {
-    // TODO Implement method for EXTRA CREDIT!
-  }
+//  public static double hourHandRadians(int hours, double minutes) {
+//    // TODO Implement method for EXTRA CREDIT!
+//  }
+//
+//  /**
+//   * Computes and returns the angle made by the minute hand, measured
+//   * counter-clockwise from the positive X-axis (3 o'clock on the clock face).
+//   *
+//   * @param minutes minute component of time, from real interval [0&ndash;60).
+//   * @return        angle (in radians) to which minute hand is oriented.
+//   */
+//  public static double minuteHandRadians(double minutes) {
+//    // TODO Implement method for EXTRA CREDIT!
+//  }
 
 }
